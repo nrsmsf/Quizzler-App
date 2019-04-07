@@ -56,11 +56,13 @@ class ViewController: UIViewController {
         if questionNumber <= 12{
             questionLabel.text = allQuestions.list[questionNumber].questionText
             updateUI()
+            progressBar.frame.size.width = (view.frame.size.width / 13) * CGFloat(questionNumber + 1)
         }
             
         else{
-            let alert = UIAlertController(title: "Awesome1", message: "You have passed all the questions. Do you want to restart?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Awesome", message: "You have passed all the questions. Do you want to restart?", preferredStyle: .alert)
             let restartAction = UIAlertAction(title: "Restart", style: .default) { (UIAlertAction) in
+                self.score = 0
                 self.startOver()
                 self.nextQuestion()
             }
